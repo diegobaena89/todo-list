@@ -34,7 +34,7 @@ This is a TODO App where the user will be able to create his tasks and, through 
 
 ---
 
-You can aldo visit the deployed website by clicking [here](https://todo-list-tau-flax.vercel.app/).
+You can also visit the deployed website by clicking [here](https://todo-list-tau-flax.vercel.app/).
 
 ---
 
