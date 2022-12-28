@@ -13,3 +13,74 @@
   margin-left: 16px;
   width: 100%;
 }
+
+.taskContainer button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray-100);
+  transition: color 0.1s ease-in;
+}
+
+.taskContainer button:hover {
+  color: var(--blue);
+}
+
+/* Styling checkbox */
+.myCheckbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.myCheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+}
+
+.myCheckbox input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.myCheckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.myCheckbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

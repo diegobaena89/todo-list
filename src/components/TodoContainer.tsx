@@ -5,11 +5,11 @@ import { Task } from './Task';
 import styles from './TodoContainer.module.css';
 
 export function TodoContainer() {
-  const [emptyTask, setEmptyTask] = useState(true);
-  const [tasks, setTasks] = useState(['Estudar React']);
+  const [tasks, setTasks] = useState<string[]>([]);
   const [newTaskText, setNewTaskText] = useState('');
+  const [taskSelected, setTaskSelected] = useState(0);
 
-  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+  function handleCreateNewTask(event: React.FormEvent) {
     event?.preventDefault();
     setTasks([...tasks, newTaskText]);
     setNewTaskText('');
@@ -17,6 +17,23 @@ export function TodoContainer() {
 
   function handleNewTaskChange(event: React.ChangeEvent<HTMLInputElement>) {
     setNewTaskText(event?.target.value);
+  }
+
+  function deleteTask(taskToDelete: string) {
+    const tasksFilteres = tasks.filter((task) => {
+      return task !== taskToDelete;
+    });
+
+    setTasks(tasksFilteres);
+    if (taskSelected > 0) {
+      setTaskSelected(Number(taskSelected - 1));
+    } else {
+      return;
+    }
+  }
+
+  function selectTask() {
+    setTaskSelected(Number(taskSelected + 1));
   }
 
   return (
@@ -40,12 +57,20 @@ export function TodoContainer() {
             Tarefas criadas <span>{tasks.length}</span>
           </p>
           <p className={styles.concludedTasks}>
-            Concluídas <span>0</span>
+            Concluídas <span>{taskSelected}</span>
           </p>
         </div>
       </div>
+      {tasks.length <= 0 && <EmptyTask />}
       {tasks.map((userTask) => {
-        return <Task content={userTask} />;
+        return (
+          <Task
+            key={userTask}
+            content={userTask}
+            onDeleteTask={deleteTask}
+            onSelectTask={selectTask}
+          />
+        );
       })}
     </>
   );
