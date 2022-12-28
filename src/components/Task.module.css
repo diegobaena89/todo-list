@@ -1,0 +1,15 @@
+.taskContainer {
+  width: 736px;
+  display: flex;
+  margin: 0 auto 12px;
+  heigh: 72px;
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.taskContainer > p {
+  margin-left: 16px;
+  width: 100%;
+}

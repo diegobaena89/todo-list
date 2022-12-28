@@ -1,16 +1,12 @@
-import { useState } from 'react';
 import { Header } from './components/Header';
-import { SearchTab } from './components/SearchTab';
-import { TodoContainer } from './components/TodoContainer';
 import './global.css';
 
-function App() {
-  const [count, setCount] = useState(0);
+import { TodoContainer } from './components/TodoContainer';
 
+function App() {
   return (
     <>
       <Header />
-      <SearchTab />
       <TodoContainer />
     </>
   );
